@@ -3,6 +3,7 @@ Gallery.js looks similar to the desktop Google-Picture gallery.
 I wrote this gallery with easy modification in mind. 
 It will also resize properly.
 
+![](Desktop.gif)
 
 ### Get started
 
@@ -15,7 +16,8 @@ javascript
 ```markdown
 
 //init
-let gallery = new Gallery();
+let gallery = new Gallery()
+gallery.init()
 
 //add Image
 let img = document.createElement('img')
