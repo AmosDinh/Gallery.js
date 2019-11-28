@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Gallery.js</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #marger {
+
+            width: 60%;
+            margin: 0 auto;
+
+        }
+
+        #gallery,
+        #gallery2 {
+            border: solid 1px black;
+
+        }
+    </style>
+
+    <div id="marger">
+        <div id="gallery"></div>
+    </div>
+    <div id="gallery2"></div>
+    <script src="gallery.js"></script>
+    <script>
+        const arr = ["60x60", "150x150", "100x75", "60x60", "150x150", "100x75", "60x60", "150x150", "100x75", "60x60"]
+
+        let gallery = new Gallery();
+        gallery.init()
+
+        // use a loader such as this to load the images in right order
+        // you can also build your own dynamic loader using Gallery.getOptions() -> {{width: num, perRow: num, margin: num}}
+        // and Gallery.getImageArrayLength() loading multiple perRow images at a time to reduce loading time or building a row when
+        // a full row of images is loaded
+
+        function loader(i) {
+            if (i >= arr.length) return
+            let img = document.createElement('img');
+            img.onload = function () {
+                gallery.addImage(img)
+                loader(++i)
+            }
+            img.src = "https://via.placeholder.com/" + arr[i]
+        }
+        loader(0)
+
+
+
+        let gallery2 = new Gallery();
+        //new Id so you can use multiple galleries on one page
+        //note that options should be changed before init to avoid possible errors
+
+        //new Id to distinguish from the first gallery
+        gallery2.options.galleryId = "gallery2"
+
+        //adds Image titles, must set image.alt or image.title  = title
+        gallery2.options.imageTitles = true
+        gallery2.init()
+
+        /* galleryFullScreen.options.getImageGreyValue = true */
+        //will make the padding either black or very-lightgrey depending on the grey value of the picture
+        //only works when website is not run locally, but from a server. (canvas-ctx-origin error)
+
+        gallery2.options.autoBuild = false
+        // -> must call Gallery.callBuildRow()
+
+        function loader2(i) {
+            if (i >= arr.length) return
+            let img = document.createElement('img');
+            img.alt = arr[i] + " number: " + i
+
+            img.onload = function () {
+
+                gallery2.addImage(img)
+                //builds rows on last img
+                //callBuildRow() only adds one image
+                //callBuildRow(true) will add all 
+
+                console.log(i, arr.length - 1)
+                if (i === arr.length - 1) gallery2.callBuildRow(true)
+                else loader2(++i)
+
+            }
+            img.src = "https://via.placeholder.com/" + arr[i]
+        }
+        loader2(0)
+    </script>
+</body>
+
+</html>
