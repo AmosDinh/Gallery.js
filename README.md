@@ -28,7 +28,7 @@ img.src = 'url'
 
 ```
 
-### Additional information
+### Additional information (please see example.html for further information)
 The gallery-width is determined by the html element width;
 
 add row settings
