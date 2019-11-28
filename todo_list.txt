@@ -1,0 +1,8 @@
+
+- Add animation on img insert, refer to https://codepen.io/balvin/pen/gKrXdM
+
+- Add easy link/onclick handler for images for user
+
+- Look into if js can be replaced with almost pure flexbox
+
+- custom gallery modes, perhaps(With title/ with onclick/ with hover+information...)
