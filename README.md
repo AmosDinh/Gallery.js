@@ -85,10 +85,10 @@ gallery.options = {
             return document.getElementById(thisGallery.options.galleryId).clientWidth
         },
 
-        galleryId: "gallery",
-        autoBuild: true,
-        getImgGreyValue: false,
-        initBool: true,
+        galleryId: "gallery",       //needs to be changed for second, third gallery
+        autoBuild: true,            //will "refresh" for every added picture
+        getImgGreyValue: false,     // "sidefill" color is only white
+        initBool: true,             
         cssStyles: function () {
             return ".row{display: flex;justify-content:space-around;}.imgWrapper{display:inline-block;display:-moz-inline-box;}.imgHover:hover{box-shadow: 0 4px 14px rgba(0,0,0,0.5)}#" + thisGallery.options.galleryId + "{box-sizing:border-box;}"
         }
